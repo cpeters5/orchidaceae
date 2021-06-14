@@ -1,0 +1,206 @@
+{% load static %}
+{% include 'base.html' %}
+
+<style>
+    ul{
+        padding-left:10px;
+        line-height: 30px;
+        list-style-type:none;
+    }
+    li {
+            display: list-item;
+    }
+    .card-body {
+        font-size: 15px;
+    }
+    .sidebtn {
+        text-align: left;
+        width: 200px;
+    }
+</style>
+<br>
+
+<div class="container-fluid" style="min-height:200px;">
+    <div style="clear:both"></div>
+    <div class="row">
+        <div class="d-none d-sm-block col-sm-3 col-lg-2 ">
+            {% include "side_home.html" %}
+        </div>
+
+        <div class="col-sm-7 col-lg-8" style="margin-top:7px;">
+            <div id="accordion">
+<!--                Privacy policy-->
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h6 class="card-title" style="margin-bottom: 0">Policies</h6>
+                    </div>
+                    <div class="card-body">
+                        <button type="button" class="btn btn-xs info-collapse sidebtn" data-toggle="collapse" data-target="#Privacy">Privacy policy</button>
+                        <div id="Privacy" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                {% include 'documents/privacy_policy1.html' %}
+                            </div>
+                        </div>
+        <!--                Terms of Use-->
+                        <button type="button" class="btn btn-xs info-collapse sidebtn" data-toggle="collapse" data-target="#TermsofUse">Terms of Use</button>
+                        <div id="TermsofUse" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                {% include 'documents/termsofuse1.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h6 class="card-title" style="margin-bottom: 0">Instruction</h6>
+                    </div>
+                    <div class="card-body">
+                <!--                Upload instruction-->
+                        <button type="button" class="btn btn-xs info-collapse sidebtn" data-toggle="collapse" data-target="#Webupload">Upload from a webpage</button>
+                        <div id="Webupload" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                {% include 'documents/instructionupload1.html' %}
+                            </div>
+                        </div>
+
+<!--                Photo Submission Policy-->
+                        <button type="button" class="btn btn-xs info-collapse sidebtn" data-toggle="collapse" data-target="#Submission">Photo submission policy</button>
+                        <div id="Submission" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                {% include 'documents/photosubmissionguideline1.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                Maintenance-->
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h6 class="card-title" style="margin-bottom: 0">Maintenance</h6>
+                    </div>
+                    <div class="card-body">
+                <!--                Upload instruction-->
+                        <button type="button" class="btn btn-xs info-collapse sidebtn" data-toggle="collapse" data-target="#Maintenance">Scheduled Maintenance</button>
+                        <div id="Maintenance" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                {% include 'documents/maintenance.html' %}
+                            </div>
+                        </div>
+                <!--                Upload instruction-->
+                        <button type="button" class="btn btn-xs info-collapse sidebtn" data-toggle="collapse" data-target="#WCSP">WCSP Upload</button>
+                        <div id="WCSP" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                {% include 'documents/datasources/WCSP.html' %}
+                            </div>
+                        </div>
+<!--                                IOA Upload-->
+                        <button type="button" class="btn btn-xs info-collapse sidebtn" data-toggle="collapse" data-target="#IOA">IOA Upload</button>
+                        <div id="IOA" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                {% include 'documents/datasources/IOA.html' %}
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+<!--                Release Notes-->
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h6 class="card-title" style="margin-bottom: 0">Release Notes</h6>
+                    </div>
+                    <div class="card-body" style="padding:10px;">
+
+    <!--                V. 3.1-->
+                        <button type="button" class="btn btn-xs info-collapse sidebtn" data-toggle="collapse" data-target="#Change1">OrchidRoots V.3.1 - 2020-10-01</button>
+                        <div id="Change1" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                {% include 'documents/changes1.html' %}
+                            </div>
+                        </div>
+
+    <!--                V. 3.0-->
+                        <button type="button" class="btn btn-xs info-collapse sidebtn" data-toggle="collapse" data-target="#Change2">OrchidRoots V.3 - 2019/06/01</button>
+                        <div id="Change2" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                {% include 'documents/changes2.html' %}
+                            </div>
+                        </div>
+
+    <!--                Bluenanta -->
+                        <button type="button" class="btn btn-xs info-collapse sidebtn" data-toggle="collapse" data-target="#Change3">BlueNanta V.1.0 - 2015-?-?</button>
+                        <div id="Change3" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                TBD
+                            </div>
+                        </div>
+
+
+                    {% if user.tier.tier > 3 %}
+    <!--                Bluenanta -->
+                            <button type="button" class="btn btn-xs info-collapse sidebtn" data-toggle="collapse" data-target="#migration">Deployment Procedures</button>
+                            <div id="migration" class="collapse" data-parent="#accordion">
+                                <div class="card-body">
+                                    TBD
+                                </div>
+                            </div>
+
+    <!--                Bluenanta -->
+                            <button type="button" class="btn btn-xs info-collapse sidebtn" data-toggle="collapse" data-target="#Change3">BlueNanta V.1.0 - 2021-?-?</button>
+                            <div id="Change3" class="collapse" data-parent="#accordion">
+                                <div class="card-body">
+                                    TBD
+                                </div>
+                            </div>
+
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+
+<!--                Public-->
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h6 class="card-title" style="margin-bottom: 0">Public inspection requirements</h6>
+                </div>
+
+                <div class="card-body" style="padding:10px;">
+
+                    "Tax-exempt organizations must make annual returns and exemption applications filed with
+                    the IRS available for public inspection and copying upon request..." [The IRS].<br>
+                    To conform with this reqirement, all relevant forms and publications are posted below.
+                    <br>
+
+                    <ul>
+                        <li>
+                            <a href="{% url 'documents:articles' %}" target="_blank">Article Of Incorporation</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'documents:bylaws' %}" target="_blank">Bylaws</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'documents:req501c3' %}" target="_blank">Application for Recognition of Exemption Under 501(c)(3) of the Internal Revenue Code</a>
+                        </li>
+                       <li>
+                             Maryland Association of Nonprofit Organizations, Conflic of Interest
+                        </li>
+                    </ul>
+                </div>
+
+    <!--                <div style="margin:0 auto;border:1px solid lightgrey;">-->
+    <!--                    <div class="btn" href="">Tax (Form 990-PF)</div>-->
+    <!--                    <div class="btn" href="">2019</div>-->
+    <!--                    <div class="btn" href="">2020</div>-->
+    <!--                    <div class="btn" href="">2021</div>-->
+    <!--                    <div class="btn" href="">2022</div>-->
+    <!--                    <div class="btn" href="">2023</div>-->
+    <!--                </div>-->
+
+
+            </div>
+        </div>
+    </div>
+</div>

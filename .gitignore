@@ -1,0 +1,19 @@
+#settings.py # lets add this git, add local_settings instead
+myproject/local_settings.py
+__pycache__/
+__init__.py
+old/
+src/
+.idea/
+*.pyc
+src/
+data/
+dbview/
+.coverage
+.env*
+myproject/.env
+myproject.sock
+base.html
+*_test*
+*-test*
+data/

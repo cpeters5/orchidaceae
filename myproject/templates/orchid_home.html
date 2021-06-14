@@ -1,0 +1,179 @@
+{% include "base.html" %}
+{% block body %}
+<style>
+
+div.text-c {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 11px;
+}
+.box {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    color: white;
+    margin: 4px 0;
+    font-size:12px;
+}
+
+.thumbnails {
+   object-fit: cover;
+   overflow: hidden;
+   height: 10vw;
+   width : 10vw;
+   padding:2px;
+}
+
+
+.survey {
+   object-fit: cover;
+   overflow: hidden;
+   height: 80px;
+   width : 200px;
+   padding:2px;
+}
+@media only screen and (max-width: 800px) {
+    div.text-c {
+        font-size: 11px;
+    }
+    .thumbnails {
+       height: 10vw;
+       width : 10vw;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .thumbnails {
+        width:15vw;
+        height:15vw;
+    }
+}
+
+
+img{
+    width:100%;
+}
+
+
+/* [3] Finally, transforming the image when container gets hovered */
+.img-hover-zoom:hover img {
+  transform: scale(1.5);
+}
+    ul{
+        padding-left:15px;
+        font-size: 13px;
+        padding-left:10px;
+        line-height: 30px;
+        list-style-type:none;
+    }
+
+
+.btn-custom{
+    margin:0;
+    padding:0;
+    color: #100d0d;
+    width:100px !important;
+    height:25px;
+    font-size:14px;
+    display: inline-block;
+    display:inline-block;
+}
+
+.btn-custom:hover {
+    text-decoration: none;
+    color: darkblue;
+}
+</style>
+<br>
+<br>
+
+<div style="clear:both"></div>
+
+<div class="container-fluid" style="min-height:200px;border:0 solid grey">
+    <div style="clear:both"></div>
+    <div class="row">
+        <div class="d-none d-sm-block col-sm-3 col-lg-2" style="padding:0;">
+            {% include "side_home.html" %}
+        </div>
+
+        <div class="col-sm-8 col-lg-9">
+            <div class="card mt-3">
+                <div class="card-body" style="font-size:15px">
+                    <h6 class="card-title d-inline-block">Welcome to OrchidRoots</h6>
+                    <div class="d-inline-block">
+                        OrchidRoots is a non-profit organization. Our goal is to provide a tool that will help
+                        our users search for and find the roots of their orchids.
+                        Though each member of our team works on a voluntary basis, there are ongoing costs for technology,
+                        operation and new development that would require some funding. Please make a donation to help our course
+                            <a class="btn btn-custom btn-outline-primary" href="{% url 'donation:donateapp' %}">HERE</a>.
+                        Your donation will allow us to deliver more value and to make the world of orchids more transparent.
+                        
+
+                    </div>
+                    Our survey has now been closed.  We will draw winners for a chance to win the first prize: A brand new copy of
+                    "Flora of China volume 25: Orchidaceae" Missouri Botanical Press (September 28, 2009).
+                    There are some consolation prizes as well.  The result summary and answers for some suggestions from
+                    the survey and the name of winners will be posted in our Facebook Group BlueNanta on March 10 2021.
+
+                    Thank you for your time to fill out the survey.  Your input will help shape future of OrchidRoots.
+
+                    <p>
+
+                    <form class="form-inline" action="{% url 'search:search_match' %}">
+                        And now, start your journey by looking for an orchid:&nbsp;&nbsp;&nbsp;
+                        <input type="hidden" name="role" value="">
+                        <input type="text" class="form-control border border-right-0 searchbox" name="search" value="" onfocus="this.select()" pattern=".{3,}" placeholder="Search..." required="" title="Include genus to speed up the search." style="width:250px; border:2px solid #3b9ff7 !important;">
+                    </form>
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+<!--                <div class="card-header">-->
+<!--                    <h6 class="card-title" style="margin-bottom: 0"><a href="{% url 'orchidlist:browse' %}?role={{role}}&type={{image.pid.pid.type}}&display=checked">Browse Images</a></h6>-->
+<!--                </div>-->
+                <div class="card-body">
+                    {% for image in randimages %}
+                    {% if image.pid.pid.type == 'hybrid' %}
+                        <div style="display:inline-block;">
+                        <a href="{% url 'orchidlist:browse' %}?role={{role}}&type={{image.pid.pid.type}}&genus={{image.pid.pid.genus}}&display=checked">
+                            <div class="box">
+                                <img class="thumbnails" alt="" src="/static/utils/images/hybrid/{{image.image_file}}">
+<!--                                <div class="text-c">{{image.pid.pid.speciesname|safe}}</div>-->
+                            </div>
+                        </a>
+                        </div>
+                    {% else %}
+                        <div style="display:inline-block;">
+                        <a href="{% url 'orchidlist:browse' %}?role={{role}}&type={{image.pid.pid.type}}&genus={{image.pid.pid.genus}}&display=checked">
+                            <div class="box">
+                                <img class="thumbnails" alt="" src="/static/utils/images/species/{{image.image_file}}">
+                            </div>
+                        </a>
+                        </div>
+                    {% endif %}
+
+                    {% endfor %}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <br>
+        </div>
+    </div>
+
+
+
+
+</div> <!--Summary-->
+
+
+
+
+
+
+{% endblock %}
